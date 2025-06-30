@@ -1,0 +1,88 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---------- Light theme variables ---------- */
+:root {
+  /* Global background gradient */
+  --bg-start: #ffffff;
+  --bg-end:   #f0f4f8;
+
+  --text-main: #1a1a40;
+  --text-sub:  #4a4a4a;
+
+  /* Accent colors (Banner + About) */
+  --accent-primary: #4b7be5;
+  --accent-blob:   #4b7be5;
+  --accent-blob2:  #5ac8fa;
+
+  --icon-bg:       #ffffff;      /* Light mode card background */
+  --icon-text:     #1a1a40;
+  --icon-bg-hover: #f0f4f8;      /* Light mode hover background */
+
+  --btn-bg:        #4b7be5;
+  --btn-hover:     #3a63c1;
+  --btn-text:      #ffffff;
+}
+
+/* ---------- Dark theme variables ---------- */
+html.dark {
+  --bg-start: #1a1a40;
+  --bg-end:   #0f172a;
+
+  --text-main: #f7f7f7;
+  --text-sub:  #d1d5db;
+
+  --accent-primary: #a3e4db;
+  --accent-blob:   #5ac8fa;
+  --accent-blob2:  #63e6be;
+
+  --icon-bg:       #16317a;      /* Dark mode card background */
+  --icon-text:     #a3e4db;
+  --icon-bg-hover: #4b7be5;      /* Dark mode hover background */
+
+  --btn-bg:        #16317a;
+  --btn-hover:     #0b1120;
+  --btn-text:      #ffffff;
+}
+
+/* ---------- Apply variables site-wide ---------- */
+body {
+  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  color: var(--text-main);
+  transition: background 0.6s, color 0.6s;
+}
+
+/* Optional: scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-end);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-primary);
+  border-radius: 4px;
+}
+
+/* Links and buttons use accent colors */
+a, button {
+  color: var(--accent-primary);
+  transition: color 0.3s ease;
+}
+a:hover, button:hover {
+  color: var(--btn-hover);
+}
+
+/* Example utility classes using variables */
+.bg-icon {
+  background-color: var(--icon-bg);
+  color: var(--icon-text);
+  transition: background-color 0.3s ease;
+}
+.bg-icon:hover {
+  background-color: var(--icon-bg-hover);
+}
