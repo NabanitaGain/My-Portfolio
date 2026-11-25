@@ -1,88 +1,290 @@
+
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* Class-based Dark Mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- Global Settings ---------- */
+
 html {
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
 }
 
-/* ---------- Light theme variables ---------- */
-:root {
-  /* Global background gradient */
-  --bg-start: #ffffff;
-  --bg-end:   #f0f4f8;
-
-  --text-main: #1a1a40;
-  --text-sub:  #4a4a4a;
-
-  /* Accent colors (Banner + About) */
-  --accent-primary: #4b7be5;
-  --accent-blob:   #4b7be5;
-  --accent-blob2:  #5ac8fa;
-
-  --icon-bg:       #ffffff;      /* Light mode card background */
-  --icon-text:     #1a1a40;
-  --icon-bg-hover: #f0f4f8;      /* Light mode hover background */
-
-  --btn-bg:        #4b7be5;
-  --btn-hover:     #3a63c1;
-  --btn-text:      #ffffff;
-}
-
-/* ---------- Dark theme variables ---------- */
-html.dark {
-  --bg-start: #1a1a40;
-  --bg-end:   #0f172a;
-
-  --text-main: #f7f7f7;
-  --text-sub:  #d1d5db;
-
-  --accent-primary: #a3e4db;
-  --accent-blob:   #5ac8fa;
-  --accent-blob2:  #63e6be;
-
-  --icon-bg:       #16317a;      /* Dark mode card background */
-  --icon-text:     #a3e4db;
-  --icon-bg-hover: #4b7be5;      /* Dark mode hover background */
-
-  --btn-bg:        #16317a;
-  --btn-hover:     #0b1120;
-  --btn-text:      #ffffff;
-}
-
-/* ---------- Apply variables site-wide ---------- */
 body {
-  background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+
+  background: linear-gradient(
+    135deg,
+    var(--bg-start),
+    var(--bg-end)
+  );
+
   color: var(--text-main);
   transition: background 0.6s, color 0.6s;
 }
 
-/* Optional: scrollbar styling */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Light Theme ---------- */
+
+:root {
+  --bg-start: #ffffff;
+  --bg-end: #f0f4f8;
+
+  --text-main: #1a1a40;
+  --text-sub: #4a4a4a;
+
+  --accent-primary: #4b7be5;
+  --accent-blob: #4b7be5;
+  --accent-blob2: #5ac8fa;
+
+  --icon-bg: #ffffff;
+  --icon-text: #1a1a40;
+  --icon-bg-hover: #f0f4f8;
+
+  --btn-bg: #4b7be5;
+  --btn-hover: #3a63c1;
+  --btn-text: #ffffff;
+}
+
+/* ---------- Dark Theme ---------- */
+
+html.dark {
+  --bg-start: #1a1a40;
+  --bg-end: #0f172a;
+
+  --text-main: #f7f7f7;
+  --text-sub: #d1d5db;
+
+  --accent-primary: #a3e4db;
+  --accent-blob: #5ac8fa;
+  --accent-blob2: #63e6be;
+
+  --icon-bg: #16317a;
+  --icon-text: #a3e4db;
+  --icon-bg-hover: #4b7be5;
+
+  --btn-bg: #16317a;
+  --btn-hover: #0b1120;
+  --btn-text: #ffffff;
+}
+
+/* ---------- Common Page Layout ---------- */
+
+.page-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: 28px 24px 40px;
+}
+
+/* ---------- Common Page Heading ---------- */
+
+.page-heading {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--accent-primary);
+  margin: 0 0 24px;
+}
+
+/* ---------- Responsive Layout ---------- */
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 20px 16px 32px;
+  }
+
+  .page-heading {
+    font-size: 1.875rem;
+    margin-bottom: 20px;
+  }
+}
+
+/* ---------- Scrollbar ---------- */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-end);
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: var(--accent-primary);
   border-radius: 4px;
 }
 
-/* Links and buttons use accent colors */
-a, button {
-  color: var(--accent-primary);
+/* ---------- Links and Buttons ---------- */
+
+a,
+button {
   transition: color 0.3s ease;
 }
-a:hover, button:hover {
-  color: var(--btn-hover);
-}
 
-/* Example utility classes using variables */
+/* ---------- Icon Styling ---------- */
+
 .bg-icon {
   background-color: var(--icon-bg);
   color: var(--icon-text);
   transition: background-color 0.3s ease;
 }
+
 .bg-icon:hover {
   background-color: var(--icon-bg-hover);
+}
+
+
+/* ========================================
+   GLOBAL RESPONSIVE SETTINGS
+======================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+  max-width: none;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  text-align: initial;
+}
+
+main {
+  min-width: 0;
+  width: 100%;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+input,
+textarea,
+select {
+  min-width: 0;
+  max-width: 100%;
+  font-family: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+h1,
+h2,
+h3,
+p,
+td,
+a {
+  overflow-wrap: break-word;
+}
+
+/* Common Page Container */
+
+.page-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: 28px 24px 40px;
+}
+
+/* Common Page Heading */
+
+.page-heading {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--accent-primary);
+  margin: 0 0 24px;
+}
+
+/* Responsive Tables */
+
+.table-responsive {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive table {
+  width: 100%;
+  min-width: 500px;
+  border-collapse: collapse;
+}
+
+/* Tablet */
+
+@media (max-width: 1023px) {
+  .page-container {
+    padding: 24px 20px 36px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 767px) {
+  .page-container {
+    padding: 20px 16px 28px;
+  }
+
+  .page-heading {
+    margin-bottom: 20px;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+/* Small Mobile */
+
+@media (max-width: 374px) {
+  .page-container {
+    padding-inline: 12px;
+  }
+
+  .page-heading {
+    font-size: 1.65rem;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

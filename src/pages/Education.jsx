@@ -16,6 +16,8 @@ const educationData = [
     institution: "Daffodil International University, Dhaka",
     duration: "2023 – Present",
     result: "Current CGPA: 3.70",
+    degree: "B.Sc. in CSE",
+    grade: "3.70",
   },
   {
     id: 2,
@@ -24,6 +26,8 @@ const educationData = [
     institution: "Khulna Mohila Polytechnic Institute",
     duration: "2016 – 2020",
     result: "CGPA: 3.75",
+    degree: "Diploma in Computer Technology",
+    grade: "3.75",
   },
   {
     id: 3,
@@ -32,6 +36,8 @@ const educationData = [
     institution: "Govt. Coronation Secondary Girls' School, Khulna",
     duration: "2015",
     result: "GPA: 4.50",
+    degree: "SSC (Science)",
+    grade: "4.50",
   },
 ];
 
@@ -39,42 +45,45 @@ const educationData = [
 
 const Education = () => {
   return (
-    <section
-      id="education"
-      className="max-w-7xl mx-auto px-6 py-12 flex flex-col gap-10"
-    >
+    <section id="education" className="page-container">
 
-      {/* ==================== Education Heading ==================== */}
+      {/* ==================== Page Heading ==================== */}
 
-      <h2
-        className="text-4xl font-bold mb-6"
-        style={{ color: "var(--accent-primary)" }}
-      >
+      <h2 className="page-heading">
         Education
       </h2>
 
       {/* ==================== Education Cards ==================== */}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
         {educationData.map((edu) => (
           <div
             key={edu.id}
-            className="bg-white dark:bg-[#1A1A40]
-            border border-gray-200 dark:border-gray-700
-            rounded-xl shadow-sm hover:shadow-md
-            transition duration-300 p-6 flex flex-col gap-4"
+            className="
+              bg-white dark:bg-[#1A1A40]
+              border border-gray-200 dark:border-gray-700
+              rounded-xl shadow-sm hover:shadow-lg
+              transition-all duration-300
+              p-5 flex flex-col gap-3
+            "
           >
 
             {/* Education Icon and Title */}
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-start gap-3">
 
-              <div className="bg-[#A3E4DB] dark:bg-[#4B7BE5]/20 p-2 rounded-full shrink-0">
+              <div
+                className="
+                  bg-[#A3E4DB]
+                  dark:bg-[#4B7BE5]/20
+                  p-3 rounded-xl shrink-0
+                "
+              >
                 {edu.icon}
               </div>
 
-              <h3 className="text-xl font-semibold text-[#4B7BE5]">
+              <h3 className="text-lg font-semibold text-[#4B7BE5] leading-snug">
                 {edu.title}
               </h3>
 
@@ -82,7 +91,7 @@ const Education = () => {
 
             {/* Institution */}
 
-            <p className="text-[#333333] dark:text-gray-300 font-medium">
+            <p className="text-[#333333] dark:text-gray-300 font-medium leading-relaxed">
               {edu.institution}
             </p>
 
@@ -94,29 +103,54 @@ const Education = () => {
 
             {/* Academic Result */}
 
-            <p className="text-sm font-semibold text-[#1A1A40] dark:text-white">
-              {edu.result}
-            </p>
+            <div className="mt-auto pt-3 border-t border-gray-200 dark:border-gray-700">
+
+              <span
+                className="
+                  inline-block px-3 py-1.5
+                  rounded-md text-sm font-semibold
+                  bg-[#A3E4DB]/40 text-[#1A1A40]
+                  dark:bg-[#4B7BE5]/20 dark:text-[#A3E4DB]
+                "
+              >
+                {edu.result}
+              </span>
+
+            </div>
 
           </div>
         ))}
 
       </div>
 
-      {/* ==================== Academic Summary Table ==================== */}
+      {/* ==================== Academic Summary ==================== */}
 
-      <div className="mt-12">
+      <div className="mt-8">
 
-        <h3 className="text-2xl font-bold text-[#4B7BE5] mb-5">
+        <h3
+          className="text-xl md:text-2xl font-bold mb-2"
+          style={{ color: "var(--accent-primary)" }}
+        >
           Academic Summary
         </h3>
 
-        <p className="text-sm text-gray-600 dark:text-gray-300 mb-5">
+        <p
+          className="text-sm md:text-base mb-4"
+          style={{ color: "var(--text-sub)" }}
+        >
           A summary of my academic qualifications, study duration
           and academic achievements.
         </p>
 
-        <div className="overflow-x-auto rounded-xl border border-gray-300 dark:border-gray-700 shadow-sm">
+        {/* Responsive Table Container */}
+
+        <div
+          className="
+            overflow-x-auto rounded-xl
+            border border-gray-200 dark:border-gray-700
+            shadow-sm
+          "
+        >
 
           <table className="w-full min-w-[500px] border-collapse text-left">
 
@@ -127,21 +161,21 @@ const Education = () => {
 
                 <th
                   scope="col"
-                  className="border border-gray-300 dark:border-gray-700 p-4"
+                  className="px-5 py-3 font-semibold"
                 >
                   Degree
                 </th>
 
                 <th
                   scope="col"
-                  className="border border-gray-300 dark:border-gray-700 p-4"
+                  className="px-5 py-3 font-semibold"
                 >
                   Duration
                 </th>
 
                 <th
                   scope="col"
-                  className="border border-gray-300 dark:border-gray-700 p-4"
+                  className="px-5 py-3 font-semibold text-center"
                 >
                   Result
                 </th>
@@ -153,59 +187,42 @@ const Education = () => {
 
             <tbody className="text-[#1A1A40] dark:text-gray-200">
 
-              {/* B.Sc. */}
+              {educationData.map((edu, index) => (
+                <tr
+                  key={edu.id}
+                  className={`
+                    border-b border-gray-200
+                    dark:border-gray-700 last:border-b-0
+                    ${
+                      index % 2 === 0
+                        ? "bg-white dark:bg-[#1A1A40]"
+                        : "bg-gray-50 dark:bg-gray-800"
+                    }
+                    hover:bg-[#A3E4DB]/20
+                    transition-colors duration-200
+                  `}
+                >
 
-              <tr className="bg-white dark:bg-[#1A1A40] hover:bg-[#A3E4DB]/20 transition-colors">
+                  {/* Degree */}
 
-                <td className="border border-gray-300 dark:border-gray-700 p-4 font-medium">
-                  B.Sc. in CSE
-                </td>
+                  <td className="px-5 py-3.5 font-medium">
+                    {edu.degree}
+                  </td>
 
-                <td className="border border-gray-300 dark:border-gray-700 p-4">
-                  2023 – Present
-                </td>
+                  {/* Duration */}
 
-                <td className="border border-gray-300 dark:border-gray-700 p-4 font-semibold">
-                  3.70
-                </td>
+                  <td className="px-5 py-3.5 whitespace-nowrap">
+                    {edu.duration}
+                  </td>
 
-              </tr>
+                  {/* Result */}
 
-              {/* Diploma */}
+                  <td className="px-5 py-3.5 text-center font-semibold">
+                    {edu.grade}
+                  </td>
 
-              <tr className="bg-gray-50 dark:bg-gray-800 hover:bg-[#A3E4DB]/20 transition-colors">
-
-                <td className="border border-gray-300 dark:border-gray-700 p-4 font-medium">
-                  Diploma in Computer Technology
-                </td>
-
-                <td className="border border-gray-300 dark:border-gray-700 p-4">
-                  2016 – 2020
-                </td>
-
-                <td className="border border-gray-300 dark:border-gray-700 p-4 font-semibold">
-                  3.75
-                </td>
-
-              </tr>
-
-              {/* SSC */}
-
-              <tr className="bg-white dark:bg-[#1A1A40] hover:bg-[#A3E4DB]/20 transition-colors">
-
-                <td className="border border-gray-300 dark:border-gray-700 p-4 font-medium">
-                  SSC (Science)
-                </td>
-
-                <td className="border border-gray-300 dark:border-gray-700 p-4">
-                  2015
-                </td>
-
-                <td className="border border-gray-300 dark:border-gray-700 p-4 font-semibold">
-                  4.50
-                </td>
-
-              </tr>
+                </tr>
+              ))}
 
             </tbody>
 

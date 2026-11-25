@@ -116,7 +116,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="max-w-7xl mx-auto px-6 py-12 flex flex-col gap-12"
+      className="max-w-7xl mx-auto px-4 md:px-6 pt-6 pb-10 flex flex-col gap-0"
     >
 
       {/* ==================== Page Heading ==================== */}
