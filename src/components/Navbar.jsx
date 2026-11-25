@@ -20,10 +20,12 @@ const links = [
 ];
 
 export default function Navbar() {
+
   const [theme, setTheme] = useState("light");
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Theme persistence
+  // ================= Theme Persistence =================
+
   useEffect(() => {
     const saved = localStorage.getItem("portfolio-theme");
 
@@ -45,11 +47,15 @@ export default function Navbar() {
     localStorage.setItem("portfolio-theme", theme);
   }, [theme]);
 
-  // Toggle light and dark mode
-  const toggleTheme = () =>
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  // ================= Toggle Light and Dark Mode =================
 
-  // Navbar styling
+  const toggleTheme = () =>
+    setTheme((prev) =>
+      prev === "light" ? "dark" : "light"
+    );
+
+  // ================= Navbar Styling =================
+
   const navClasses =
     "sticky top-0 z-50 w-full transition-colors duration-300" +
     (theme === "dark"
@@ -66,25 +72,32 @@ export default function Navbar() {
 
   return (
     <header className={navClasses}>
+
       <div className="mx-auto max-w-7xl flex items-center justify-between p-4">
 
-        {/* Left: Logo and Name */}
+        {/* ================= Left: Logo and Name ================= */}
+
         <div className="flex items-center gap-2 select-none">
+
           <div className="w-9 h-9 rounded-full border-2 border-[#4B7BE5] overflow-hidden flex items-center justify-center">
+
             <img
               src="https://i.ibb.co/tPB3z6cr/Chat-GPT-Image-Jun-30-2025-03-02-17-PM.png"
               alt="Portfolio Logo"
               className="w-full h-full object-cover"
               draggable={false}
             />
+
           </div>
 
           <span className="text-lg font-bold">
             Nabanita Gain
           </span>
+
         </div>
 
-        {/* Mobile: Hamburger Menu and Theme */}
+        {/* ================= Mobile: Hamburger Menu and Theme ================= */}
+
         <div className="flex items-center lg:hidden">
 
           <button
@@ -95,9 +108,12 @@ export default function Navbar() {
             aria-expanded={menuOpen}
             aria-controls="portfolio-navigation"
           >
+
             <span
               className={`absolute top-2 left-1 w-6 h-0.5 bg-current transform transition ${
-                menuOpen ? "rotate-45 translate-y-1.5" : ""
+                menuOpen
+                  ? "rotate-45 translate-y-1.5"
+                  : ""
               }`}
             ></span>
 
@@ -109,12 +125,16 @@ export default function Navbar() {
 
             <span
               className={`absolute top-6 left-1 w-6 h-0.5 bg-current transform transition ${
-                menuOpen ? "-rotate-45 -translate-y-1.5" : ""
+                menuOpen
+                  ? "-rotate-45 -translate-y-1.5"
+                  : ""
               }`}
             ></span>
+
           </button>
 
-          {/* Mobile Theme Button */}
+          {/* ================= Mobile Theme Button ================= */}
+
           <button
             type="button"
             onClick={toggleTheme}
@@ -123,9 +143,11 @@ export default function Navbar() {
           >
             {theme === "dark" ? "🌞" : "🌙"}
           </button>
+
         </div>
 
-        {/* Center: Multi-page Navigation */}
+        {/* ================= Center: Multi-page Navigation ================= */}
+
         <nav
           id="portfolio-navigation"
           aria-label="Main navigation"
@@ -136,29 +158,41 @@ export default function Navbar() {
              bg-inherit lg:bg-transparent p-4 lg:p-0
              divide-y divide-gray-300 lg:divide-y-0`}
         >
+
           {links.map(({ to, label, icon }) => (
+
             <NavLink
               key={to}
               to={to}
               end={to === "/"}
               className={({ isActive }) =>
                 `${linkBase} ${linkColor} ${
-                  isActive ? "border-b-2 border-current" : ""
+                  isActive
+                    ? "border-b-2 border-current"
+                    : ""
                 }`
               }
               onClick={() => setMenuOpen(false)}
             >
+
               {icon}
+
               <span>{label}</span>
+
             </NavLink>
+
           ))}
+
         </nav>
 
-        {/* Right: Resume and Desktop Theme Button */}
+        {/* ================= Right: Resume and Desktop Theme Button ================= */}
+
         <div className="hidden lg:flex items-center gap-4">
 
+          {/* ================= Updated Resume Button ================= */}
+
           <a
-            href="https://drive.google.com/file/d/10x3E6sR3vHIaBhhWt3tIs8OAxn9oOgWu/view?usp=sharing"
+            href="https://drive.google.com/file/d/16FiKDgJoCzvLMYASBkGaDb4tb3IRDKXv/view"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 rounded-full border-2 border-[#4B7BE5] bg-transparent hover:bg-[#4B7BE5] hover:text-white transition-colors duration-200 text-sm font-semibold"
@@ -166,7 +200,8 @@ export default function Navbar() {
             Download Résumé
           </a>
 
-          {/* Desktop Theme Button */}
+          {/* ================= Desktop Theme Button ================= */}
+
           <button
             type="button"
             onClick={toggleTheme}
@@ -175,9 +210,11 @@ export default function Navbar() {
           >
             {theme === "dark" ? "🌞" : "🌙"}
           </button>
+
         </div>
 
       </div>
+
     </header>
   );
 }

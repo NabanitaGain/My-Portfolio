@@ -172,7 +172,10 @@ const Banner = () => {
               const offset = designation
                 .split(" ")
                 .slice(0, wordIndex)
-                .reduce((total, item) => total + item.length + 1, 0);
+                .reduce(
+                  (total, item) => total + item.length + 1,
+                  0
+                );
 
               return (
                 <span
@@ -274,10 +277,10 @@ const Banner = () => {
             ))}
           </div>
 
-          {/* ================= Resume Button ================= */}
+          {/* ================= Updated Resume Button ================= */}
 
           <a
-            href="https://drive.google.com/file/d/10x3E6sR3vHIaBhhWt3tIs8OAxn9oOgWu/view?usp=sharing"
+            href="https://drive.google.com/file/d/16FiKDgJoCzvLMYASBkGaDb4tb3IRDKXv/view"
             target="_blank"
             rel="noopener noreferrer"
             style={{
