@@ -19,7 +19,7 @@ const About = () => (
         viewport={{ once: true }}
       >
         <h2
-          className="text-4xl font-bold ml-[-50px]"
+          className="text-4xl font-bold"
           style={{ color: "var(--accent-primary)" }}
         >
           About Me
@@ -45,11 +45,33 @@ const About = () => (
           keeps me grounded.
         </p>
 
+        {/* Career Objectives */}
+        <div className="mt-8">
+          <h3
+            className="text-2xl font-bold mb-4"
+            style={{ color: "var(--accent-primary)" }}
+          >
+            Career Objectives
+          </h3>
+
+          <ol
+            className="list-decimal pl-6 space-y-2 text-lg"
+            style={{ color: "var(--text-sub)" }}
+          >
+            <li>Complete my B.Sc. in CSE.</li>
+
+            <li>Develop professional technical skills.</li>
+
+            <li>Gain practical industry experience.</li>
+
+            <li>Build a career in Cloud and Cybersecurity.</li>
+          </ol>
+        </div>
         {/* Quick facts */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 text-base">
           {[
             { Icon: MapPin, txt: "Dhaka, Bangladesh" },
-            { Icon: GraduationCap, txt: "B.Sc. CSE, DIU (3rd Yr)" },
+            { Icon: GraduationCap, txt: "B.Sc. CSE, DIU (Final Semester)" },
             { Icon: Music, txt: "Music lover & playlist curator" },
             { Icon: Plane, txt: "Travel enthusiast" },
           ].map(({ Icon, txt }) => (
